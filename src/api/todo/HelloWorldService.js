@@ -1,15 +1,16 @@
 import axios from "axios"
 import AuthenticationService from "../../components/todo/AuthenticationService";
+import { API_URL,JPA_API_URL } from "../../Constants";
 class HelloWorldService {
 
     executeHelloWorldService(){
         //console.log('executed service') promise back
-        return axios.get('http://localhost:8080/hello-world');
+        return axios.get(`${JPA_API_URL}/hello-world`);
     }
 
     executeHelloWorldBeanService(){
         //console.log('executed service') promise back
-        return axios.get('http://localhost:8080/hello-world-bean');
+        return axios.get(`${JPA_API_URL}/hello-world-bean`);
     }
 
     executeHelloWorldPathVariableService(name){
@@ -22,7 +23,7 @@ class HelloWorldService {
         let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
 
         //console.log('executed service') promise back
-        return axios.get(`http://localhost:8080/hello-world/path-variable/${name}`,
+        return axios.get(`${JPA_API_URL}/hello-world/path-variable/${name}`,
             {
                 headers:{
                     authorization:basicAuthHeader
